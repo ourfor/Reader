@@ -1,4 +1,5 @@
 ﻿Imports System.IO
+
 Namespace Read.Menu.Main
     Public Class Read
         ' 属性
@@ -8,6 +9,9 @@ Namespace Read.Menu.Main
         Private Shared BookFile As FileStream
         Private Shared BookRead As StreamReader
         Private Shared SaveRead As String()
+        Private Shared Chapter As Chapter = New Chapter()
+        Private Shared xmlPath As String = "C:\Users\Sagit\Documents\VS_Code\XML\noval.xml"
+
 
         '方法
         Public Sub getBookContent(path As String)
@@ -19,37 +23,48 @@ Namespace Read.Menu.Main
         End Sub
 
         Public Shared Sub getContent()
-            If CurrentLine = LineNub Then
-                LineNub += 1
-                CurrentLine += 1
-                ReDim Preserve SaveRead(LineNub)
-
-                Dim Line(13) As String
-                For Index As Integer = 0 To UBound(Line) - 1
-                    Line(Index) = BookRead.ReadLine()
-                    Line(UBound(Line)) += Line(Index) + vbCrLf
-                Next Index
-                Form1.TextBox1.Text = Line(UBound(Line))
-
-                SaveRead(LineNub) = Line(UBound(Line))
-                'MsgBox(BookFile.Position.ToString)
-            Else
+            If CurrentLine < UBound(SaveRead) Then
                 CurrentLine += 1
                 Form1.TextBox1.Text = SaveRead(CurrentLine)
+            Else
+                Form1.TextBox1.TextAlign = HorizontalAlignment.Center
+                Form1.TextBox1.Text = "小说读完了，换一本吧"
             End If
-
         End Sub
 
         Public Shared Sub getPreviousContent()
-            If CurrentLine >= 1 Then
+            If CurrentLine >= 2 Then
                 CurrentLine -= 1
                 Form1.TextBox1.Text = SaveRead(CurrentLine)
-                ' MsgBox(BookFile.Position.ToString)
             Else
                 Form1.TextBox1.Text = SaveRead(1)
             End If
-
         End Sub
+
+        Public Shared Sub Book2Array()
+            Dim indexA As Integer = 1
+            Dim lineNum As Integer = 1
+            Chapter.setKeywords("第.{1,5}章")
+            While BookRead.EndOfStream <> True
+                ReDim Preserve SaveRead(indexA)
+                Dim Line(13) As String
+                For Index As Integer = 0 To UBound(Line) - 1
+                    lineNum += 1
+                    Line(Index) = BookRead.ReadLine() + ""
+                    If Chapter.IsMatch(Line(Index)) Then
+                        Chapter.WriteXml(Line(Index), lineNum)
+                    End If
+                    Line(UBound(Line)) += Line(Index) + vbCrLf
+                Next Index
+                SaveRead(indexA) = Line(UBound(Line))
+                indexA += 1
+            End While
+            Chapter.Save(xmlPath)
+        End Sub
+
+        Public Shared Function getXMLPath() As String
+            Return xmlPath
+        End Function
 
     End Class
 End Namespace

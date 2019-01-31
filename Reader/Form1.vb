@@ -7,6 +7,8 @@ Public Class Form1
         Me.Text = "多看阅读，让阅读更快乐!"
         Me.TextBox1.Text = vbCrLf + vbCrLf + "高尔基说过: "" 书籍是人类进步的阶梯 """
         Me.TextBox1.TextAlign = HorizontalAlignment.Center
+        Me.Height = 900
+        Me.Width = 1336
         Dim titleHeight = Me.Height - Me.ClientSize.Height
         TextBox1.Height = Me.Height - MenuStrip1.Height - titleHeight
         TextBox1.Font = afont.getFonts()
@@ -14,6 +16,7 @@ Public Class Form1
         'Me.FormBorderStyle = Windows.Forms.FormBorderStyle.None
         '最大化
         'Me.WindowState = FormWindowState.Maximized
+        ListBox1.Visible = False
     End Sub
 
     Private Sub Form1_Resize() Handles MyBase.Resize
@@ -47,6 +50,7 @@ Public Class Form1
         bookPath = Read.Menu.Local.OpenFile.getBookPath()
         Me.TextBox1.TextAlign = HorizontalAlignment.Left
         Text.getBookContent(bookPath)
+        Read.Menu.Main.Read.Book2Array()
         Read.Menu.Main.Read.getContent()
     End Sub
 
@@ -125,5 +129,14 @@ Public Class Form1
 
     Private Sub About_Click(sender As Object, e As EventArgs) Handles 关于ToolStripMenuItem.Click
         MessageBox.Show("Version=1.0" + vbCrLf + "开发者:ourfor")
+    End Sub
+
+    Private Sub ShowChapter_Click(sender As Object, e As EventArgs) Handles 目录ToolStripMenuItem.Click
+        ListBox1.Visible = True
+        ListBox1.Height = Me.Height
+        Dim showLB = New Read.Menu.Main.ShowChapter()
+        showLB.setPath(Read.Menu.Main.Read.getXMLPath)
+        showLB.showChapter()
+
     End Sub
 End Class

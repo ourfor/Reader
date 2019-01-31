@@ -28,7 +28,7 @@
     <InstallUrl>https://file.ourfor.top/Reader/</InstallUrl>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>3</ApplicationRevision>
+    <ApplicationRevision>4</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -109,7 +109,9 @@
   <ItemGroup>
     <Compile Include="class\Help\Help.vb" />
     <Compile Include="class\Local\OpenFile.vb" />
+    <Compile Include="class\Main\Chapter.vb" />
     <Compile Include="class\Main\Read.vb" />
+    <Compile Include="class\Main\ShowChapter.vb" />
     <Compile Include="class\Setting\setFont.vb" />
     <Compile Include="class\Tools\ChainOfR\DoNothing.vb" />
     <Compile Include="class\Tools\ChainOfR\FontSizeAdd.vb" />

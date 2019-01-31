@@ -48,9 +48,10 @@ Partial Class Form1
         Me.查看帮助ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.检查更新ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.技术支持ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.关于ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.关于ToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ListBox1 = New System.Windows.Forms.ListBox()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -76,25 +77,25 @@ Partial Class Form1
         '查找ToolStripMenuItem
         '
         Me.查找ToolStripMenuItem.Name = "查找ToolStripMenuItem"
-        Me.查找ToolStripMenuItem.Size = New System.Drawing.Size(158, 30)
+        Me.查找ToolStripMenuItem.Size = New System.Drawing.Size(215, 30)
         Me.查找ToolStripMenuItem.Text = "查找"
         '
         '目录ToolStripMenuItem
         '
         Me.目录ToolStripMenuItem.Name = "目录ToolStripMenuItem"
-        Me.目录ToolStripMenuItem.Size = New System.Drawing.Size(158, 30)
+        Me.目录ToolStripMenuItem.Size = New System.Drawing.Size(215, 30)
         Me.目录ToolStripMenuItem.Text = "目录"
         '
         '上一页ToolStripMenuItem
         '
         Me.上一页ToolStripMenuItem.Name = "上一页ToolStripMenuItem"
-        Me.上一页ToolStripMenuItem.Size = New System.Drawing.Size(158, 30)
+        Me.上一页ToolStripMenuItem.Size = New System.Drawing.Size(215, 30)
         Me.上一页ToolStripMenuItem.Text = "上一页([)"
         '
         '下一页ToolStripMenuItem
         '
         Me.下一页ToolStripMenuItem.Name = "下一页ToolStripMenuItem"
-        Me.下一页ToolStripMenuItem.Size = New System.Drawing.Size(158, 30)
+        Me.下一页ToolStripMenuItem.Size = New System.Drawing.Size(215, 30)
         Me.下一页ToolStripMenuItem.Text = "下一页(])"
         '
         '本地ToolStripMenuItem
@@ -197,20 +198,26 @@ Partial Class Form1
         '查看帮助ToolStripMenuItem
         '
         Me.查看帮助ToolStripMenuItem.Name = "查看帮助ToolStripMenuItem"
-        Me.查看帮助ToolStripMenuItem.Size = New System.Drawing.Size(215, 30)
+        Me.查看帮助ToolStripMenuItem.Size = New System.Drawing.Size(154, 30)
         Me.查看帮助ToolStripMenuItem.Text = "查看帮助"
         '
         '检查更新ToolStripMenuItem
         '
         Me.检查更新ToolStripMenuItem.Name = "检查更新ToolStripMenuItem"
-        Me.检查更新ToolStripMenuItem.Size = New System.Drawing.Size(215, 30)
+        Me.检查更新ToolStripMenuItem.Size = New System.Drawing.Size(154, 30)
         Me.检查更新ToolStripMenuItem.Text = "检查更新"
         '
         '技术支持ToolStripMenuItem
         '
         Me.技术支持ToolStripMenuItem.Name = "技术支持ToolStripMenuItem"
-        Me.技术支持ToolStripMenuItem.Size = New System.Drawing.Size(215, 30)
+        Me.技术支持ToolStripMenuItem.Size = New System.Drawing.Size(154, 30)
         Me.技术支持ToolStripMenuItem.Text = "技术支持"
+        '
+        '关于ToolStripMenuItem
+        '
+        Me.关于ToolStripMenuItem.Name = "关于ToolStripMenuItem"
+        Me.关于ToolStripMenuItem.Size = New System.Drawing.Size(154, 30)
+        Me.关于ToolStripMenuItem.Text = "关于"
         '
         'ContextMenuStrip1
         '
@@ -231,17 +238,22 @@ Partial Class Form1
         Me.TextBox1.Size = New System.Drawing.Size(1137, 663)
         Me.TextBox1.TabIndex = 1
         '
-        '关于ToolStripMenuItem
+        'ListBox1
         '
-        Me.关于ToolStripMenuItem.Name = "关于ToolStripMenuItem"
-        Me.关于ToolStripMenuItem.Size = New System.Drawing.Size(215, 30)
-        Me.关于ToolStripMenuItem.Text = "关于"
+        Me.ListBox1.BackColor = System.Drawing.Color.NavajoWhite
+        Me.ListBox1.FormattingEnabled = True
+        Me.ListBox1.ItemHeight = 34
+        Me.ListBox1.Location = New System.Drawing.Point(1, 39)
+        Me.ListBox1.Name = "ListBox1"
+        Me.ListBox1.Size = New System.Drawing.Size(226, 650)
+        Me.ListBox1.TabIndex = 2
         '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(13.0!, 34.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1137, 700)
+        Me.Controls.Add(Me.ListBox1)
         Me.Controls.Add(Me.MenuStrip1)
         Me.Controls.Add(Me.TextBox1)
         Me.Font = New System.Drawing.Font("Noto Sans CJK JP Regular", 13.91597!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(134, Byte))
@@ -285,4 +297,5 @@ Partial Class Form1
     Friend WithEvents 减小ToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents 打开关闭全屏F6ToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents 关于ToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ListBox1 As ListBox
 End Class
