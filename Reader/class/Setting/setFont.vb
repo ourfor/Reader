@@ -7,12 +7,19 @@ Namespace Read.Menu.Setting
         '定义字体的属性
         Private fontSource As Byte() = My.Resources.NotoSans
         Private fontlength As Integer = My.Resources.NotoSans.Length
-        Private fontSize As Integer = 16
+        Private fontSize As Single = 16
 
 
         Public Sub setFontBaseA()
             fontSource = My.Resources.NotoSans
             fontlength = My.Resources.NotoSans.Length
+        End Sub
+
+        Public Sub New()
+        End Sub
+
+        Public Sub New(fontsize As Single)
+            Me.fontSize = fontsize
         End Sub
 
         Public Sub setFontBaseB()

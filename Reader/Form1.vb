@@ -2,6 +2,7 @@
 
 Public Class Form1
     Dim afont As New Read.Menu.Setting.setFont
+    Dim bfont As New Read.Menu.Setting.setFont(10.285714)
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.Text = "多看阅读，让阅读更快乐!"
@@ -17,10 +18,14 @@ Public Class Form1
         '最大化
         'Me.WindowState = FormWindowState.Maximized
         ListBox1.Visible = False
+        ListBox1.Font = bfont.getFonts
+        TextBox1.Select(0, 0)
     End Sub
 
     Private Sub Form1_Resize() Handles MyBase.Resize
         AdjustTextBox()
+        ListBox1.Height = TextBox1.Height
+        ListBox1.Width = Me.Width / 3
     End Sub
 
 
@@ -93,6 +98,11 @@ Public Class Form1
         End If
     End Sub
 
+    Public Sub AdjustTextBox2()
+        TextBox1.Width = Me.Width
+        AdjustTextBox()
+    End Sub
+
     ' 更改字体
     Private Sub NotoSansToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles NotoSansToolStripMenuItem.Click
         afont.setFontBaseA()
@@ -132,11 +142,40 @@ Public Class Form1
     End Sub
 
     Private Sub ShowChapter_Click(sender As Object, e As EventArgs) Handles 目录ToolStripMenuItem.Click
-        ListBox1.Visible = True
-        ListBox1.Height = Me.Height
-        Dim showLB = New Read.Menu.Main.ShowChapter()
-        showLB.setPath(Read.Menu.Main.Read.getXMLPath)
-        showLB.showChapter()
+        'ListBox1.ClearSelected()
+        ListBox1.Visible = Not ListBox1.Visible
+        ListBox1.Height = TextBox1.Height
+        ListBox1.Width = 240
+        If ListBox1.Visible Then
+            Dim showLB = New Read.Menu.Main.ShowChapter()
+            showLB.setPath(Read.Menu.Main.Read.getXMLPath)
+            ListBox1.DisplayMember = "MyText"
+            ListBox1.ValueMember = "MyValue"
+            showLB.showChapter()
+            TextBox1.Location = New Point(ListBox1.Width, MenuStrip1.Height)
+        End If
+        'ListBox1.SelectedIndex = Read.Menu.Main.Read.getCurrentLine
+        If Not ListBox1.Visible Then
+            AdjustTextBox2()
+        End If
+        TextBox1.Select(0, 0)
+    End Sub
+
+    Private Sub ListBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListBox1.SelectedIndexChanged
+        'MessageBox.Show(ListBox1.SelectedValue.ToString)
+        Dim line As Long = CType(ListBox1.SelectedValue.ToString(), Long)
+        'MessageBox.Show(line.ToString())
+        TextBox1.Width = Me.Width - ListBox1.Width
+        TextBox1.Location = New Point(ListBox1.Width, MenuStrip1.Height)
+
+        Read.Menu.Main.Read.GoToSelectLine(line)
+    End Sub
+
+    Private Sub GoToLine_Click(sender As Object, e As EventArgs) Handles 查找ToolStripMenuItem.Click
+        Dim line As Integer
+        line = InputBox("输入你要跳转的行:")
+        Read.Menu.Main.Read.GoToSelectLine(line)
 
     End Sub
+
 End Class

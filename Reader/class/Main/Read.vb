@@ -44,7 +44,7 @@ Namespace Read.Menu.Main
         Public Shared Sub Book2Array()
             Dim indexA As Integer = 1
             Dim lineNum As Integer = 1
-            Chapter.setKeywords("第.{1,5}章")
+            Chapter.setKeywords("^第.{1,9}章")
             While BookRead.EndOfStream <> True
                 ReDim Preserve SaveRead(indexA)
                 Dim Line(13) As String
@@ -52,7 +52,7 @@ Namespace Read.Menu.Main
                     lineNum += 1
                     Line(Index) = BookRead.ReadLine() + ""
                     If Chapter.IsMatch(Line(Index)) Then
-                        Chapter.WriteXml(Line(Index), lineNum)
+                        Chapter.WriteXml(Line(Index), indexA)
                     End If
                     Line(UBound(Line)) += Line(Index) + vbCrLf
                 Next Index
@@ -64,6 +64,15 @@ Namespace Read.Menu.Main
 
         Public Shared Function getXMLPath() As String
             Return xmlPath
+        End Function
+
+        Public Shared Sub GoToSelectLine(line As Long)
+            CurrentLine = line - 1
+            getContent()
+        End Sub
+
+        Public Shared Function getCurrentLine()
+            Return CurrentLine
         End Function
 
     End Class
