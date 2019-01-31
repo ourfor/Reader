@@ -245,7 +245,7 @@ Partial Class Form1
         Me.ListBox1.ItemHeight = 34
         Me.ListBox1.Items.AddRange(New Object() {"item1", "item2"})
         Me.ListBox1.Location = New System.Drawing.Point(0, 39)
-        Me.ListBox1.Margin = New System.Windows.Forms.Padding(3, 3, 3, 0)
+        Me.ListBox1.Margin = New System.Windows.Forms.Padding(3, 0, 3, 0)
         Me.ListBox1.Name = "ListBox1"
         Me.ListBox1.Size = New System.Drawing.Size(170, 650)
         Me.ListBox1.TabIndex = 2
