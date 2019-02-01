@@ -3,6 +3,7 @@
 Public Class Form1
     Dim afont As New Read.Menu.Setting.setFont
     Dim bfont As New Read.Menu.Setting.setFont(10.285714)
+    Public Shared ReadData As String = ""
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.Text = "多看阅读，让阅读更快乐!"
@@ -20,6 +21,13 @@ Public Class Form1
         ListBox1.Visible = False
         ListBox1.Font = bfont.getFonts
         TextBox1.Select(0, 0)
+        Dim UserName = System.Environment.UserName
+        If Not My.Computer.FileSystem.DirectoryExists("C:\Users\" + UserName + "\.ReadData") Then
+            My.Computer.FileSystem.CreateDirectory("C:\Users\" + UserName + "\.ReadData")
+        End If
+        ReadData = "C:\Users\" + UserName + "\.ReadData"
+        ReadData += "noval.xml"
+        Read.Menu.Main.Read.setXmlPath(ReadData)
     End Sub
 
     Private Sub Form1_Resize() Handles MyBase.Resize
@@ -142,13 +150,18 @@ Public Class Form1
     End Sub
 
     Private Sub ShowChapter_Click(sender As Object, e As EventArgs) Handles 目录ToolStripMenuItem.Click
-        'ListBox1.ClearSelected()
+        'ListBox1.ClearSelected() 
+        If Read.Menu.Local.OpenFile.getBookPath = "" Then
+            Dim keydown = New KeyEventArgs(Keys.Oem6)
+            Read.Menu.tools.KeyPress.Key(keydown)
+        End If
         ListBox1.Visible = Not ListBox1.Visible
         ListBox1.Height = TextBox1.Height
         ListBox1.Width = 240
         If ListBox1.Visible Then
+
             Dim showLB = New Read.Menu.Main.ShowChapter()
-            showLB.setPath(Read.Menu.Main.Read.getXMLPath)
+                showLB.setPath(ReadData)
             ListBox1.DisplayMember = "MyText"
             ListBox1.ValueMember = "MyValue"
             showLB.showChapter()

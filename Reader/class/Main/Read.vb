@@ -10,8 +10,11 @@ Namespace Read.Menu.Main
         Private Shared BookRead As StreamReader
         Private Shared SaveRead As String()
         Private Shared Chapter As Chapter = New Chapter()
-        Private Shared xmlPath As String = "C:\Users\Sagit\Documents\VS_Code\XML\noval.xml"
+        Private Shared xmlPath As String = Form1.ReadData
 
+        Public Shared Sub setXmlPath(path As String)
+            xmlPath = path
+        End Sub
 
         '方法
         Public Sub getBookContent(path As String)
@@ -42,6 +45,7 @@ Namespace Read.Menu.Main
         End Sub
 
         Public Shared Sub Book2Array()
+            ' MessageBox.Show(BookFile.Name.ToString())
             Dim indexA As Integer = 1
             Dim lineNum As Integer = 1
             Chapter.setKeywords("^第.{1,9}章")
