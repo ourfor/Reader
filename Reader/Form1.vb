@@ -191,4 +191,8 @@ Public Class Form1
 
     End Sub
 
+    Private Sub FullScreen_Click(sender As Object, e As EventArgs) Handles 打开关闭全屏F6ToolStripMenuItem.Click
+        Dim keydown = New KeyEventArgs(Keys.F6)
+        Read.Menu.tools.KeyPress.Key(keydown)
+    End Sub
 End Class

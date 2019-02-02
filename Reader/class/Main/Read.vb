@@ -63,7 +63,7 @@ Namespace Read.Menu.Main
                 SaveRead(indexA) = Line(UBound(Line))
                 indexA += 1
             End While
-            MessageBox.Show(xmlPath)
+            'MessageBox.Show(xmlPath)
             Chapter.Save(xmlPath)
         End Sub
 

@@ -147,7 +147,7 @@ Partial Class Form1
         '
         Me.字体ToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NotoSansToolStripMenuItem, Me.RobotoToolStripMenuItem})
         Me.字体ToolStripMenuItem.Name = "字体ToolStripMenuItem"
-        Me.字体ToolStripMenuItem.Size = New System.Drawing.Size(209, 30)
+        Me.字体ToolStripMenuItem.Size = New System.Drawing.Size(121, 30)
         Me.字体ToolStripMenuItem.Text = "字形"
         '
         'NotoSansToolStripMenuItem
@@ -166,7 +166,7 @@ Partial Class Form1
         '
         Me.字号ToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.增大ToolStripMenuItem, Me.减小ToolStripMenuItem})
         Me.字号ToolStripMenuItem.Name = "字号ToolStripMenuItem"
-        Me.字号ToolStripMenuItem.Size = New System.Drawing.Size(209, 30)
+        Me.字号ToolStripMenuItem.Size = New System.Drawing.Size(121, 30)
         Me.字号ToolStripMenuItem.Text = "字号"
         '
         '增大ToolStripMenuItem
@@ -184,7 +184,7 @@ Partial Class Form1
         '背景ToolStripMenuItem
         '
         Me.背景ToolStripMenuItem.Name = "背景ToolStripMenuItem"
-        Me.背景ToolStripMenuItem.Size = New System.Drawing.Size(209, 30)
+        Me.背景ToolStripMenuItem.Size = New System.Drawing.Size(121, 30)
         Me.背景ToolStripMenuItem.Text = "背景"
         '
         '帮助ToolStripMenuItem
