@@ -25,7 +25,7 @@ Public Class Form1
         If Not My.Computer.FileSystem.DirectoryExists("C:\Users\" + UserName + "\.ReadData") Then
             My.Computer.FileSystem.CreateDirectory("C:\Users\" + UserName + "\.ReadData")
         End If
-        ReadData = "C:\Users\" + UserName + "\.ReadData"
+        ReadData = "C:\Users\" + UserName + "\.ReadData\"
         ReadData += "noval.xml"
         Read.Menu.Main.Read.setXmlPath(ReadData)
     End Sub

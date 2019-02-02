@@ -10,7 +10,7 @@ Namespace Read.Menu.Main
         Private Shared BookRead As StreamReader
         Private Shared SaveRead As String()
         Private Shared Chapter As Chapter = New Chapter()
-        Private Shared xmlPath As String = Form1.ReadData
+        Private Shared xmlPath As String = ""
 
         Public Shared Sub setXmlPath(path As String)
             xmlPath = path
@@ -63,6 +63,7 @@ Namespace Read.Menu.Main
                 SaveRead(indexA) = Line(UBound(Line))
                 indexA += 1
             End While
+            MessageBox.Show(xmlPath)
             Chapter.Save(xmlPath)
         End Sub
 
