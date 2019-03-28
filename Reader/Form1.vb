@@ -1,7 +1,7 @@
 ﻿Imports System
 
 Public Class Form1
-    Dim afont As New Read.Menu.Setting.setFont
+    Dim afont As New Read.Menu.Setting.setFont()
     Dim bfont As New Read.Menu.Setting.setFont(10.285714)
     Public Shared ReadData As String = ""
 
@@ -11,6 +11,8 @@ Public Class Form1
         Me.TextBox1.TextAlign = HorizontalAlignment.Center
         Me.Height = 900
         Me.Width = 1336
+        Dim dbConnection = New Read.Database.ConnectDB()
+        dbConnection.Start()
         Dim titleHeight = Me.Height - Me.ClientSize.Height
         TextBox1.Height = Me.Height - MenuStrip1.Height - titleHeight
         TextBox1.Font = afont.getFonts()

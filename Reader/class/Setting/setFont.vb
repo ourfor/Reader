@@ -27,6 +27,7 @@ Namespace Read.Menu.Setting
             fontlength = My.Resources.Roboto.Length
         End Sub
 
+        '从文件读取字体文件
         Private Sub NewFont()
             Dim g As Graphics = Form1.CreateGraphics ' PictureBox1.CreateGraphics
             Dim fontpath As String =
@@ -46,6 +47,7 @@ Namespace Read.Menu.Setting
 
         End Sub
 
+        '在项目的编译资源中读取字体文件
         Private Sub NewFontMe()
             Dim _pfc = New PrivateFontCollection
             Dim fontMemPointer As IntPtr =
